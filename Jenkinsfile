@@ -26,10 +26,9 @@ pipeline {
 
         stage('Step 3: Run Selenium Tests') {
             steps {
-                // Chạy test với Firefox và chế độ Headless
-                // Lưu ý: Dùng dấu nháy đơn cho lệnh shell
-                sh 'mvn test -Dbrowser=firefox -Dheadless=true'
-            }
+                            // Sử dụng biến từ giao diện Jenkins truyền vào lệnh Maven
+                            sh "mvn test -Dbrowser=${params.BROWSER} -Dheadless=${params.IS_HEADLESS}"
+              }
         }
     }
 
